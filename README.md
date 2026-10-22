@@ -154,6 +154,46 @@ The goal is to make agricultural trading more accessible and transparent while s
 - Support more organized movement of agricultural produce
 
 ---
+# 🌐 Website Preview
+
+<div align="center">
+
+### Agro Link Market — Smart Agricultural Marketplace
+
+**AI-Based Market Analysis · Farmer-Buyer Connectivity · Transparent Agricultural Trade**
+
+<br>
+
+<a href="https://agroinkai.netlify.app/login">
+  <img width="1778" height="930" alt="Screenshot 2026-10-22 203946" src="https://github.com/user-attachments/assets/8bb5bd07-802d-4b99-b613-b1fafd3772e4" />
+
+</a>
+
+</div>
+
+---
+
+## 🌾 Farmer Dashboard — Crop & Sales Overview
+
+<div align="center">
+  <img width="1886" height="881" alt="Screenshot 2026-10-22 204019" src="https://github.com/user-attachments/assets/7dbd7ace-8513-45d5-9a57-3d46798007e2" />
+
+</div>
+
+<br>
+
+---
+
+## 📈 Smart Market Analysis & Buyer Recommendations
+
+<div align="center">
+  <img width="1881" height="917" alt="Screenshot 2026-10-22 204042" src="https://github.com/user-attachments/assets/8b6062dc-6715-4339-b1f0-2ffa7d48f840" />
+
+</div>
+
+<br>
+
+---
 
 # 🔄 End-to-End Workflow
 
