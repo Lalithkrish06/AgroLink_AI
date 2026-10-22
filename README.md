@@ -23,7 +23,7 @@ An agriculture-focused digital platform designed to strengthen farmer-buyer conn
 
 ### Explore AgroLink Market
 
-<a href="https://agroinkai.netlify.app/login">
+<a href="https://agroinkai.netlify.app">
 <img src="https://img.shields.io/badge/OPEN%20LIVE%20PLATFORM-AgroLink%20Market-2E7D32?style=for-the-badge&logo=netlify&logoColor=white" alt="Open AgroLink Market">
 </a>
 
