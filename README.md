@@ -531,3 +531,13 @@ Building AI applications, data-driven systems, and practical software solutions.
 *Exploring technology-driven approaches to a more accessible and transparent agricultural marketplace.*
 
 </div>
+
+---
+
+# ⭐ Support
+
+If you find the project interesting, consider giving the repository a ⭐ on GitHub.
+
+Your feedback and suggestions are welcome.
+
+---
