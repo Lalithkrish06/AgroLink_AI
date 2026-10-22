@@ -267,6 +267,24 @@ AgroLink Market aims to connect crop discovery with practical transaction coordi
 
 ---
 
+## 🌾 Agro Link Market — Platform Demonstration
+
+<div align="center">
+
+**Farmer Dashboard · Smart Market Analysis · Buyer Recommendations · Agricultural Marketplace**
+
+<br>
+
+
+
+
+</div>
+
+The project demonstration showcases the **Agro Link Market** platform, featuring farmer and buyer access, crop lot management, a farmer dashboard, smart market analysis, buyer market recommendations, transportation cost estimation, and transaction and payment workflows.
+
+---
+---
+
 # 🏗️ Project Architecture
 
 The repository is organized into three major application areas: `frontend`, `backend`, and `python_app`.
@@ -496,6 +514,21 @@ If implemented and adopted effectively, AgroLink Market could contribute to:
 AgroLink Market explores how AI and digital market-linkage tools can help address practical challenges in agricultural commerce.
 
 The project represents our effort to translate a real-world problem into a technology-driven solution through collaborative development, problem-solving, and iterative improvement.
+
+---
+# 💡 What I Learned
+
+<div align="center">
+
+Building **Agro Link Market** was an opportunity to explore how digital platforms can address practical challenges in agricultural trade.
+
+The project helped me understand the importance of combining:
+
+**AI-Based Market Analysis · Role-Based User Workflows · Crop Marketplace Design · Financial Calculations · Farmer-Buyer Connectivity**
+
+</div>
+
+Through this project, I gained experience in dashboard design, agricultural market workflows, financial analysis, and developing technology-driven solutions for real-world problems.
 
 ---
 
