@@ -475,10 +475,6 @@ The project represents our effort to translate a real-world problem into a techn
 
 </div>
 
-- **Live platform:** https://agroinkai.netlify.app/login
-- **GitHub repository:** https://github.com/Lalithkrish06/AgroLink_AI
-- **Issue tracker:** https://github.com/Lalithkrish06/AgroLink_AI/issues
-
 ---
 
 # 🤝 Feedback and Contributions
@@ -496,7 +492,7 @@ If you encounter an issue, please open a GitHub issue with:
 
 # 📄 License
 
-No license information has been confirmed in this README. Add a license section after choosing and adding the appropriate `LICENSE` file to the repository.
+This project is licensed under the **MIT License**.
 
 ---
 
