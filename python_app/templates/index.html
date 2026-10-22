@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink - Accessible & Secure Farmer Market Platform</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <!-- Chart.js for Trend Advisor -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- TOP ACCESSIBLE NAVBAR -->
+  <header class="top-nav">
+    <div class="nav-brand">
+      <span class="logo-icon">🌾</span>
+      <div class="brand-text">
+        <h1 id="app-title">AgroLink Market</h1>
+        <span class="sub-title" id="app-subtitle">Problem ID 26132 • Security & Price Discovery</span>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <!-- Permanent Language Toggle -->
+      <button class="lang-toggle-btn" id="btn-lang-toggle" onclick="toggleLanguage()">
+        <span class="lang-flag">🇮🇳</span>
+        <span id="lang-text">தமிழ் (Tamil)</span>
+      </button>
+
+      <!-- SMS Feature Phone Drawer Toggle -->
+      <button class="icon-btn sms-btn" onclick="toggleSmsDrawer()">
+        📱 <span id="lbl-sms-btn">SMS Alerts</span>
+        <span class="badge" id="sms-badge-count">1</span>
+      </button>
+
+      <!-- Blockchain Audit Explorer Toggle -->
+      <button class="icon-btn audit-btn" onclick="openLedgerModal()">
+        🛡️ <span id="lbl-audit-btn">Ledger Audit</span>
+      </button>
+
+      <!-- Auth Status Badge -->
+      <div class="auth-status" id="auth-status-badge" onclick="openAuthModal()">
+        <span class="status-dot green"></span>
+        <span id="user-display-name">Aadhaar Verified</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="main-container">
+
+    <!-- HERO ACCESSIBILITY BANNER -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <h2 id="hero-title">Formless Crop Listing & Escrow Protection</h2>
+        <p id="hero-desc">Speak your crop details, upload a photo for AI quality grading, and lock buyer funds in multi-sig escrow.</p>
+      </div>
+      <div class="hero-quick-actions">
+        <button class="hero-btn voice-hero-btn" onclick="scrollToModule('sec-voice-module')">
+          🎤 <span id="btn-hero-voice">Formless Voice Input</span>
+        </button>
+        <button class="hero-btn escrow-hero-btn" onclick="scrollToModule('sec-escrow-module')">
+          🔒 <span id="btn-hero-escrow">Multi-Sig Escrow</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TWO COLUMN GRID FOR FARMER UI -->
+    <div class="grid-2col">
+
+      <!-- MODULE 1: HYPER-ACCESSIBLE FARMER INPUT & QUALITY GRADING -->
+      <section class="card-section" id="sec-voice-module">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-icon">🎤</span>
+            <h3 id="txt-voice-title">1. Formless Voice Input & AI Quality Grade</h3>
+          </div>
+          <span class="tag-pill green" id="txt-formless-badge">Zero Manual Typing</span>
+        </div>
+
+        <div class="card-body">
+          <!-- Voice Command Interface -->
+          <div class="voice-box">
+            <div class="mic-container">
+              <button class="mic-btn" id="btn-mic" onclick="toggleVoiceRecording()">
+                <span class="mic-icon">🎤</span>
+                <span class="pulse-ring"></span>
+              </button>
+              <div class="mic-status" id="txt-mic-status">Tap microphone to speak (Tamil or English)</div>
+            </div>
+
+            <!-- Voice Quick Samples -->
+            <div class="voice-samples-container">
+              <span class="samples-label" id="txt-preset-label">Or click a simulated Tamil/English voice command:</span>
+              <div class="sample-buttons">
+                <button class="sample-btn" onclick="simulateVoice('I have 500kg of Rice in Erode for 45 rupees')">
+                  🎙️ "I have 500kg of Rice in Erode for 45 rupees"
+                </button>
+                <button class="sample-btn" onclick="simulateVoice('எனக்கு ஈரோட்டில் 500 கிலோ அரிசி உள்ளது 45 ரூபாய்')">
+                  🎙️ "எனக்கு ஈரோட்டில் 500 கிலோ அரிசி உள்ளது 45 ரூபாய்"
+                </button>
+                <button class="sample-btn" onclick="simulateVoice('I have 300kg of Turmeric in Gobi for 145 rupees')">
+                  🎙️ "I have 300kg of Turmeric in Gobi for 145 rupees"
+                </button>
+              </div>
+            </div>
+
+            <!-- Speech Transcript Box -->
+            <div class="transcript-box" id="transcript-container" style="display:none;">
+              <span class="transcript-label" id="txt-heard-label">Voice Recognized:</span>
+              <p class="transcript-text" id="txt-transcript-result">...</p>
+            </div>
+          </div>
+
+          <hr class="divider">
+
+          <!-- Image Quality Grading Module -->
+          <div class="quality-box">
+            <div class="quality-header">
+              <h4 id="txt-cv-title">📷 Image-Only AI Quality Assessor</h4>
+              <span class="sub-text" id="txt-cv-sub">Upload crop photo for instant computer vision analysis</span>
+            </div>
+
+            <div class="photo-upload-area">
+              <input type="file" id="file-crop-image" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+              <button class="btn-secondary big-btn" onclick="document.getElementById('file-crop-image').click()">
+                📷 <span id="btn-take-photo">Take Photo / Upload Image</span>
+              </button>
+              <button class="btn-outline big-btn" onclick="triggerMockCVGrading()">
+                ⚡ <span id="btn-sample-photo">Analyze Sample Harvest</span>
+              </button>
+            </div>
+
+            <!-- Quality Result Badge Card -->
+            <div class="quality-result-card" id="quality-result-box" style="display:block;">
+              <div class="badge-main" id="badge-quality-grade" style="background-color:#2d6a4f;">
+                <span class="badge-grade" id="txt-grade-letter">Grade A</span>
+                <span class="badge-desc" id="txt-grade-title">PREMIUM QUALITY</span>
+              </div>
+              <div class="quality-metrics">
+                <div class="metric-item">
+                  <span class="metric-label" id="lbl-qscore">Quality Index</span>
+                  <span class="metric-val" id="val-qscore">94 / 100</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label" id="lbl-moisture">Moisture Level</span>
+                  <span class="metric-val" id="val-moisture">11.2% (Optimal)</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label" id="lbl-defects">Defect Rate</span>
+                  <span class="metric-val" id="val-defects">0.5% (Clean)</span>
+                </div>
+              </div>
+              <div class="quality-message" id="txt-quality-msg">
+                ✓ Grade A Premium Quality: +15% Price Discovery Premium Applied
+              </div>
+            </div>
+          </div>
+
+          <!-- Structured Form Preview (Auto-Populated by Voice/AI) -->
+          <div class="auto-form-preview">
+            <h4 id="txt-preview-title">Parsed Listing Data (Auto-Filled)</h4>
+            <div class="form-grid">
+              <div class="form-group">
+                <label id="lbl-crop-name">Crop Name</label>
+                <input type="text" id="inp-crop-name" value="Paddy Rice" class="accessible-input">
+              </div>
+              <div class="form-group">
+                <label id="lbl-qty">Quantity (kg)</label>
+                <input type="number" id="inp-quantity" value="500" class="accessible-input">
+              </div>
+              <div class="form-group">
+                <label id="lbl-location">Location</label>
+                <input type="text" id="inp-location" value="Erode, Tamil Nadu" class="accessible-input">
+              </div>
+              <div class="form-group">
+                <label id="lbl-expected-price">Expected Price (₹/kg)</label>
+                <input type="number" id="inp-price" value="45.0" class="accessible-input">
+              </div>
+            </div>
+
+            <!-- Single Huge Touch Target Publish Button -->
+            <button class="btn-primary huge-btn" id="btn-publish-listing" onclick="publishCropListing()">
+              🚀 <span id="txt-btn-publish">Publish Crop Lot to Live Market</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- MODULE 2: TRANSACTION & SMART WAITING MARKET ADVISOR -->
+      <section class="card-section" id="sec-advisor-module">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-icon">📈</span>
+            <h3 id="txt-advisor-title">2. Smart Waiting Price Discovery Advisor</h3>
+          </div>
+          <span class="tag-pill blue" id="txt-ai-badge">AI Predictive Engine</span>
+        </div>
+
+        <div class="card-body">
+          <div class="advisor-selector">
+            <label id="lbl-select-crop">Select Crop for Price Forecast:</label>
+            <select id="sel-advisor-crop" class="accessible-input" onchange="updatePriceAdvisor()">
+              <option value="Paddy Rice">Paddy Rice (அரிசி)</option>
+              <option value="Turmeric">Turmeric (மஞ்சள்)</option>
+              <option value="Tomato">Tomato (தக்காளி)</option>
+              <option value="Onion">Onion (வெங்காயம்)</option>
+            </select>
+          </div>
+
+          <!-- Recommendation Banner (Hold vs Sell) -->
+          <div class="recommendation-card hold-card" id="rec-banner-box">
+            <div class="rec-icon-box" id="rec-icon">👍</div>
+            <div class="rec-details">
+              <div class="rec-status-tag" id="rec-action-badge">HOLD & STORE FOR 10 DAYS</div>
+              <p class="rec-reason" id="rec-reason-text">
+                High festival demand surge expected next week. Supply in APMC mandis is down by 22%. Holding will yield +₹7.50/kg extra margin.
+              </p>
+            </div>
+          </div>
+
+          <!-- Financial Impact Cards -->
+          <div class="financial-grid">
+            <div class="fin-card">
+              <span class="fin-label" id="lbl-curr-val">Sell Today Value</span>
+              <span class="fin-amount" id="val-curr-total">₹21,250</span>
+              <span class="fin-sub" id="val-curr-rate">@ ₹42.50 / kg</span>
+            </div>
+            <div class="fin-card highlight">
+              <span class="fin-label" id="lbl-proj-val">10-Day Forecast Value</span>
+              <span class="fin-amount green-text" id="val-proj-total">₹25,000</span>
+              <span class="fin-sub" id="val-proj-rate">@ ₹50.00 / kg (+17.6%)</span>
+            </div>
+            <div class="fin-card gain">
+              <span class="fin-label" id="lbl-gain-val">Projected Net Gain</span>
+              <span class="fin-amount" id="val-net-profit">+₹3,750</span>
+              <span class="fin-sub" id="lbl-gain-sub">Extra Profit by Holding</span>
+            </div>
+          </div>
+
+          <!-- Historical Trend Chart -->
+          <div class="chart-container">
+            <canvas id="marketTrendChart" height="180"></canvas>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- MODULE 3: BANK-GRADE SECURITY PIPELINE (ESCROW & LIVE BIDDING) -->
+    <section class="card-section full-width" id="sec-escrow-module">
+      <div class="card-header">
+        <div class="card-title">
+          <span class="card-icon">🔒</span>
+          <h3 id="txt-escrow-title">3. Bank-Grade Multi-Sig Escrow Tracker & Bidding</h3>
+        </div>
+        <span class="tag-pill gold" id="txt-bank-badge">Multi-Sig Escrow Core</span>
+      </div>
+
+      <div class="card-body">
+        
+        <div class="escrow-grid">
+          <!-- Active Listings & Bidding Panel -->
+          <div class="bidding-panel">
+            <h4 id="txt-bidding-title">Active Market Bids & Non-Reductable Auctions</h4>
+            <div class="listings-scroll-list" id="container-listings-list">
+              <!-- Listing cards rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Multi-Sig Escrow Progress Tracker -->
+          <div class="escrow-tracker-panel">
+            <h4 id="txt-tracker-title">Multi-Sig Escrow Progress Timeline</h4>
+            <div class="escrow-card" id="active-escrow-card">
+              <div class="escrow-header">
+                <div class="escrow-id-box">
+                  <span class="escrow-label">ESCROW LEDGER ID</span>
+                  <span class="escrow-val" id="lbl-escrow-id">ESC-8801-9921</span>
+                </div>
+                <div class="escrow-amount-box">
+                  <span class="escrow-label">LOCKED AMOUNT</span>
+                  <span class="escrow-amount" id="lbl-escrow-amount">₹23,000.00</span>
+                </div>
+              </div>
+
+              <!-- 4-Step Interactive Timeline -->
+              <div class="timeline">
+                <!-- Step 1: Lock -->
+                <div class="timeline-step completed" id="step-1">
+                  <div class="step-icon">🔒</div>
+                  <div class="step-content">
+                    <h5 id="txt-step1-title">Step 1: Funds Locked in Escrow</h5>
+                    <p id="txt-step1-desc">Buyer AgroCorp deposited ₹23,000 in multi-sig vault upon bid win.</p>
+                    <span class="step-time">Completed • 14:42 UTC</span>
+                  </div>
+                </div>
+
+                <!-- Step 2: Buyer Signature -->
+                <div class="timeline-step active" id="step-2">
+                  <div class="step-icon">✍️</div>
+                  <div class="step-content">
+                    <h5 id="txt-step2-title">Step 2: Signature 1 - Buyer Delivery Inspection</h5>
+                    <p id="txt-step2-desc">Buyer signs digital receipt after inspecting physical crop quality at delivery.</p>
+                    <button class="btn-action green-btn" onclick="signEscrow('BUYER')">
+                      ✍️ <span id="btn-sign-buyer">Sign & Release Funds (Buyer)</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3: Autonomous System Signature -->
+                <div class="timeline-step" id="step-3">
+                  <div class="step-icon">🤖</div>
+                  <div class="step-content">
+                    <h5 id="txt-step3-title">Step 3: Signature 2 - Autonomous 48H Release</h5>
+                    <p id="txt-step3-desc">Auto-executes if no dispute is filed within 48h dispute timer.</p>
+                    <button class="btn-action blue-btn" onclick="signEscrow('SYSTEM_AUTO_48H')">
+                      ⚡ <span id="btn-sign-system">Simulate 48h Auto-Release</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 4: Bank Transfer -->
+                <div class="timeline-step" id="step-4">
+                  <div class="step-icon">🏦</div>
+                  <div class="step-content">
+                    <h5 id="txt-step4-title">Step 4: Direct Aadhaar DBT Bank Transfer</h5>
+                    <p id="txt-step4-desc">Instant fund release to Farmer Selvam's bank account.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FEATURE PHONE SMS DRAWER SLIDE-OUT -->
+  <aside class="sms-drawer" id="sms-drawer">
+    <div class="drawer-header">
+      <h3>📱 Feature Phone SMS Push Log</h3>
+      <button class="close-btn" onclick="toggleSmsDrawer()">✕</button>
+    </div>
+    <div class="drawer-body" id="sms-logs-container">
+      <!-- Live SMS messages populated here -->
+    </div>
+  </aside>
+
+  <!-- BLOCKCHAIN AUDIT LEDGER MODAL -->
+  <div class="modal-overlay" id="ledger-modal" style="display:none;">
+    <div class="modal-card wide-modal">
+      <div class="modal-header">
+        <h3>🛡️ SHA-256 Immutable Audit Ledger Explorer</h3>
+        <button class="close-btn" onclick="closeLedgerModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="audit-status-bar">
+          <span class="audit-badge" id="lbl-audit-status">STATUS: 100% TAMPER-PROOF</span>
+          <button class="btn-secondary" onclick="verifyLedgerIntegrity()">Verify Blockchain Hash Chain</button>
+        </div>
+        <div class="blockchain-blocks-list" id="blockchain-blocks-container">
+          <!-- Block items -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASSWORDLESS AUTH MODAL -->
+  <div class="modal-overlay" id="auth-modal" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="txt-auth-modal-title">🔐 Passwordless Aadhaar Authentication</h3>
+        <button class="close-btn" onclick="closeAuthModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-options">
+          <!-- Option A: OTP -->
+          <div class="auth-tab">
+            <h4 id="txt-otp-heading">Method A: Aadhaar Mobile OTP</h4>
+            <div class="form-group">
+              <label id="lbl-mobile-no">Mobile Number</label>
+              <input type="text" id="inp-auth-phone" value="9876543210" class="accessible-input">
+            </div>
+            <button class="btn-primary full-btn" onclick="sendAuthOtp()">Send 6-Digit OTP</button>
+            <div id="otp-input-group" style="display:none; margin-top:1rem;">
+              <label id="lbl-otp-val">Enter 6-Digit OTP</label>
+              <input type="text" id="inp-auth-otp" placeholder="e.g. 882194" class="accessible-input">
+              <button class="btn-primary full-btn green-btn" style="margin-top:0.5rem;" onclick="verifyAuthOtp()">Verify & Sign In</button>
+            </div>
+          </div>
+
+          <hr class="divider">
+
+          <!-- Option B: Biometric -->
+          <div class="auth-tab">
+            <h4 id="txt-bio-heading">Method B: Instant Biometric Check</h4>
+            <p class="sub-text" id="txt-bio-desc">Scan face or fingerprint connected to Aadhaar Vault</p>
+            <div class="bio-buttons">
+              <button class="btn-secondary big-btn" onclick="verifyBiometric('fingerprint')">👆 Fingerprint Scan</button>
+              <button class="btn-secondary big-btn" onclick="verifyBiometric('face')">👤 Face ID Scan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

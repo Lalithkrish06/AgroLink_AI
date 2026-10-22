@@ -1,0 +1,17 @@
+node_modules/
+.env
+dist/
+build/
+.vite/
+__pycache__/
+*.pyc
+.venv/
+venv/
+# Local Netlify folder
+.netlify
+india/
+sih/
+smart iindia/
+scratch/
+*.zip
+rename_site.js

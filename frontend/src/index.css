@@ -1,0 +1,358 @@
+/* AgroLink AI - Clean & Minimal Agriculture Design System for SIH Prototype */
+
+:root {
+  --primary-green: #15803D;
+  --primary-dark: #166534;
+  --primary-light: #22C55E;
+  --bg-subtle: #F0FDF4;
+  --bg-app: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --text-dark: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --border-color: #E2E8F0;
+  --border-green: #86EFAC;
+  --accent-amber: #D97706;
+  --bg-amber: #FEF3C7;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  .dashboard-main {
+    padding: 1rem;
+  }
+}
+
+/* Navbar */
+.navbar {
+  height: 64px;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-body);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--bg-subtle);
+    color: var(--primary-green);
+  }
+
+  &.active {
+    background-color: var(--bg-subtle);
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #FFFFFF;
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-body);
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--bg-subtle);
+    color: var(--primary-green);
+  }
+
+  &.active {
+    background-color: var(--primary-dark);
+    color: #FFFFFF;
+  }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-green);
+  color: #FFFFFF;
+
+  &:hover {
+    background-color: var(--primary-dark);
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+
+  &:hover {
+    background-color: var(--bg-subtle);
+  }
+}
+
+.btn-secondary {
+  background-color: #E2E8F0;
+  color: var(--text-dark);
+
+  &:hover {
+    background-color: #CBD5E1;
+  }
+}
+
+.btn-danger {
+  background-color: #EF4444;
+  color: #FFFFFF;
+
+  &:hover {
+    background-color: #DC2626;
+  }
+}
+
+.btn-sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+.btn-lg {
+  padding: 0.85rem 1.75rem;
+  font-size: 1rem;
+}
+
+/* Cards & Containers */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric-card {
+  padding: 1.25rem;
+  margin-bottom: 0;
+}
+
+.metric-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-top: 0.25rem;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.4rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: #FFFFFF;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-green);
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.custom-table th {
+  background: #F1F5F9;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.custom-table td {
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-body);
+}
+
+.custom-table tr:hover {
+  background-color: #F8FAFC;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-success { background: #DCFCE7; color: #15803D; }
+.badge-warning { background: #FEF3C7; color: #B45309; }
+.badge-info    { background: #E0F2FE; color: #0369A1; }
+.badge-danger  { background: #FEE2E2; color: #B91C1C; }
+
+/* Demo Data Notice Tag */
+.demo-tag {
+  display: inline-block;
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FDE047;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Footer */
+.footer {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-color);
+  padding: 2rem;
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
